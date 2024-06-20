@@ -23,6 +23,9 @@ const config ={
 
 app.use(mysqlConexion(mysql, config,"single"))
 
+app.get("/", (req,res)=>{
+    res.end("hshhhhhhhhhhhhhhhhhhhhhhh")})
+
 app.get("/hola/:n", (req,res)=>{
     res.end(req.params.n)
    
