@@ -8,7 +8,7 @@ const path = require("path");
 const cors = require("cors");
 
 const bodyParser = require("body-parser");
-
+ console.log("hellos");
 app.set(4200);
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
