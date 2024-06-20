@@ -50,7 +50,7 @@ console.log("no funciono");
 
  
 app.get("/re", (req, res)=>{
-     const consulta = "select * from casas"
+     const consulta = "select * from users"
      req.getConnection((err, con)=>{
         if(err){
 console.log(err);
