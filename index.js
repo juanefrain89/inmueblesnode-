@@ -5,6 +5,7 @@ const mysqlConexion = require("express-myconnection");
 const mysql = require("mysql")
 const cors = require("cors");
 const {resolve} = require("path")  
+const bodyParser = require("body-parser");
 
 app.use(cors({
     origin:"http://localhost:5173"
