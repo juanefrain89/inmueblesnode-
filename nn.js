@@ -14,11 +14,11 @@ app.use(cors({
   
 app.use(bodyParser.urlencoded({ extended: true }));
 const config ={
-    host :"localhost",
-    user : "root",
-    password: "v18135w00",
-    database:"panaderia",
-    port : 3306
+    host :"bdi9402wcemoiygofcsg-mysql.services.clever-cloud.com",
+    user : "uuj2rptwesx92ql2",
+    password: "qdiGNGMNHt7wiGjgFln",
+    database:"bdi9402wcemoiygofcsg",
+    port : 20558
 }
 
 app.use(mysqlConexion(mysql, config,"single"))
