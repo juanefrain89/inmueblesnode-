@@ -22,11 +22,11 @@ app.use(cors({
 
 
 const dbConfig = {
-  host: "bdi9402wcemoiygofcsg-mysql.services.clever-cloud.com",
-  user: "uuj2rptwesx92ql2",
-  password: "qdiGNGMNHt7wiGjgFln",
-  database: "bdi9402wcemoiygofcsg",
-  port: 20558 
+    host: "bx3vv1mm1wwgct4dnagv-mysql.services.clever-cloud.com",
+  user: "u4qtpdntbug6qfgq",
+  password: "qmpGUlXyfQhfE9w18H9j",
+  database: "bx3vv1mm1wwgct4dnagv",
+  port: 3306 
 };
 
 
