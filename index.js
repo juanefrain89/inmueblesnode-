@@ -6,14 +6,12 @@ const bodyParser = require("body-parser");
 
 // Configuración de la conexión a la base de datos
 const dbConfig = {
-  host: "bdi9402wcemoiygofcsg-mysql.services.clever-cloud.com",
-  user: "uuj2rptwesx92ql2",
-  password: "qdiGNGMNHt7wiGjgFln",
-  database: "bdi9402wcemoiygofcsg",
-  port: 20558,
-  authPlugins: {
-    mysql_clear_password: () => () => Buffer.from("qdiGNGMNHt7wiGjgFln", "utf8"),
-  },
+  host: "bbw78mczcfckqp6to5nv-mysql.services.clever-cloud.com",
+  user: "uzpcg9aquasocbae",
+  password: "JldJr3skodxQ55iLISzi",
+  database: "bbw78mczcfckqp6to5nv",
+  port: 3306,
+   
 };
 
 app.use(bodyParser.json());
