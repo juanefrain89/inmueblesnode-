@@ -54,12 +54,17 @@ app.get("/re", (req, res)=>{
      req.getConnection((err, con)=>{
         if(err){
 console.log(err);
+res.status(500).send("Error al conectar a la base de datos");
+return;
         }else{
 con.query(consulta, (err, resultados)=>{
     if (err) {
-        console.log(err);
+        console.error("Error al ejecutar la consulta:", err);
+        res.status(500).send("Error al ejecutar la consulta");
+        return;
     }else{
-        res.json(resultados)
+        console.log("bien all");
+        res.send(result);
     }
 })
         }
