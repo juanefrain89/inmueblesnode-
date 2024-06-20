@@ -4,6 +4,7 @@ const mysql = require("mysql");
 const mysqlConexion = require("express-myconnection");
 const bodyParser = require("body-parser");
 
+const cors = require("cors");
 // Configuración de la conexión a la base de datos
 const dbConfig = {
   host: "bbw78mczcfckqp6to5nv-mysql.services.clever-cloud.com",
@@ -13,11 +14,15 @@ const dbConfig = {
   port: 3306,
    
 };
-
+ 
+app.use(cors({
+    origin: 'http://localhost:5173',
+    credentials: true
+}));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
-// Middleware de conexión MySQL
+ 
 app.use(mysqlConexion(mysql, dbConfig, "single"));
 
 // Ruta de prueba para verificar la conexión
@@ -48,6 +53,24 @@ app.get("/peticiones", (req, res) => {
     });
   });
 });
+
+app.post("/k", (req, res) => {
+    const { username, email, password } = req.body;
+    const query = 'INSERT INTO users (username, email, password) VALUES (?, ?, ?)';
+    req.getConnection((err, con) => {
+    con.query(query, [username, email, password], (err, result) => {
+        if (err) {
+            console.error('Error inserting user:', err);
+            res.status(500).send('Error inserting user');
+        } else {
+            console.log('User inserted:', result);
+            res.status(200).send('User created successfully');
+        }
+    });
+
+
+    })
+  });
 
 // Iniciar el servidor
 const port = process.env.PORT || 3000;
