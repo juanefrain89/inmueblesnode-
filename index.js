@@ -19,7 +19,7 @@ const config ={
     user : "uuj2rptwesx92ql2",
     password: "qdiGNGMNHt7wiGjgFln",
     database:"bdi9402wcemoiygofcsg",
-    port : 3306
+    port :  20558
 }
 
 app.use(mysqlConexion(mysql, config,"single"))
