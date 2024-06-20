@@ -15,7 +15,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 // Configuración de la conexión a la base de datos
 const config = {
   host: "bdi9402wcemoiygofcsg-mysql.services.clever-cloud.com",
-  user: "uuj2rptwesx92ql2",
+  user: "uuj2rptwesx92ql",
   password: "qdiGNGMNHt7wiGjgFln",
   database: "bdi9402wcemoiygofcsg",
   port: 20558  // Puerto específico de Clever Cloud
