@@ -32,7 +32,7 @@ app.get("/", (req, res) => {
 
 // Ruta para manejar las peticiones a la base de datos
 app.get("/peticiones", (req, res) => {
-  const query = `SELECT * FROM users`;
+  const query = `SELECT * FROM casas`;
 
   req.getConnection((err, con) => {
     if (err) {
