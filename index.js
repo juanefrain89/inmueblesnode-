@@ -15,7 +15,7 @@ const dbConfig = {
 };
 
 app.use(cors({
-  origin: 'https://inm-fmio.onrender.com/',
+  origin: 'https://inm-fmio.onrender.com',
   credentials: true
 }));
 app.use(bodyParser.json());
