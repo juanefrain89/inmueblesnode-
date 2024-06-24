@@ -75,16 +75,16 @@ app.post("/k", (req, res) => {
 
 
   app.post("/l", (req, res) => {
-    const {numero, precio, correo, metros, baños, descripcion, direccion, cuartos } = req.body
+    const {numero, precio, correo, metros, baños, descripcion, direccion, cuartos, imagen } = req.body
     const metros2 =  parseInt(metros);
     const cuartos2 = parseInt("30")
     console.log(req.body);
-        const query = 'INSERT INTO casas (whats,costo, correo, metros, baños,descripcion,ciudad ,cuartos) VALUES (?,?, ?, ?,?,?,?,?)';
+        const query = 'INSERT INTO casas (whats,costo, correo, metros, baños,descripcion,ciudad ,cuartos, imagen) VALUES (?,?, ?, ?,?,?,?,?)';
     req.getConnection((err, con)=>{
         if(err){
             console.log(err);
         }      
-        con.query(query, [numero, precio, correo, metros2, baños, descripcion, direccion, cuartos2], (err, resu)=>{
+        con.query(query, [numero, precio, correo, metros2, baños, descripcion, direccion, cuartos2, imagen], (err, resu)=>{
             if(err){
                 console.log(err);
             }
