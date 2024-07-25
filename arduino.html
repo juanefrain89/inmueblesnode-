@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Arduino Light Sensor Data</title>
+</head>
+<body>
+  <h1>Arduino Light Sensor Data</h1>
+  <p id="sensorData">Waiting for data...</p>
+
+  <script src="/socket.io.js"></script>
+  <script>
+    const socket = io();
+
+    socket.on('arduinoData', (data) => {
+      document.getElementById("sensorData").textContent = data;
+    });
+  </script>
+</body>
+</html>
