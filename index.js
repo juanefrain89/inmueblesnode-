@@ -17,12 +17,39 @@ const dbConfig = {
 };
 
 app.use(cors({
-  origin: 'https://inm-fmio.onrender.com',
+  origin: 'http://localhost:5173',
   credentials: true
 }));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
+
+// Middleware personalizado para manejar la reconexión
+const reconnectMiddleware = (req, res, next) => {
+  req.getConnection((err, connection) => {
+    if (err) {
+      console.error("Error al conectar a la base de datos:", err);
+      return res.status(500).send("Error al conectar a la base de datos");
+    }
+
+    // Si hubo un error fatal, volver a crear la conexión
+    if (err && err.fatal) {
+      connection = mysql.createConnection(dbConfig);
+      connection.connect(error => {
+        if (error) {
+          console.error("Error al reconectar a la base de datos:", error);
+          return res.status(500).send("Error al reconectar a la base de datos");
+        }
+        console.log("Reconexion exitosa");
+        next();
+      });
+    } else {
+      next();
+    }
+  });
+};
+
 app.use(mysqlConexion(mysql, dbConfig, "single"));
+app.use(reconnectMiddleware);
 
 // Configurar multer para manejar la carga de archivos
 const storage = multer.memoryStorage();
@@ -31,6 +58,32 @@ const upload = multer({ storage: storage });
 // Ruta de prueba para verificar la conexión
 app.get("/", (req, res) => {
   res.send("¡Conexión exitosa a la base de datos en Clever Cloud!");
+});
+ 
+app.post("/id", (req, res) => {
+  const { id } = req.body;
+  console.log(req.body);
+  const query = `SELECT * FROM casas WHERE id = ?`;
+
+  req.getConnection((err, con) => {
+    if (err) {
+      console.error("Error al conectar a la base de datos:", err);
+      res.status(500).send("Error al conectar a la base de datos");
+      return;
+    }
+
+    con.query(query, [id], (err, result) => {
+       
+      if (err) {
+        console.error("Error al ejecutar la consulta:", err);
+        res.status(500).send(err);
+        return;
+      }
+
+      console.log(result);
+      res.json(result); // Envía los resultados de la consulta al cliente
+    });
+  });
 });
 
 // Ruta para manejar las peticiones a la base de datos
@@ -58,7 +111,7 @@ app.get("/peticiones", (req, res) => {
         }
       });
 
-      console.log("Resultados de la consulta:", result);
+     
       res.send(result);
     });
   });
