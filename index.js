@@ -11,7 +11,7 @@ const app = express();
 const dbConfig = {
   host: "bbw78mczcfckqp6to5nv-mysql.services.clever-cloud.com",
   user: "uzpcg9aquasocbae",
-  password: "JldJr3skodxQ55iLISzi",
+  password: "JldJr3skodxQ55iLISzi5",
   database: "bbw78mczcfckqp6to5nv",
   port: 3306,
 };
