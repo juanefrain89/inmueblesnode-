@@ -27,6 +27,7 @@ const dbConfig = {
 app.use(mysqlConexion(mysql, dbConfig, "single"));
 
 app.get("/", (req, res) => {
+res.send("hola")
   const query = `SELECT * FROM patrullas`;
   
   try {
